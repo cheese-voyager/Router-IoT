@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ESP32 RC Command Center</title>
+    <!-- Google Fonts untuk tipografi premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk ikon tombol -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- MQTT.js CDN -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <h1>RC Command Center</h1>
+                <div class="status-indicator">
+                    <div class="status-dot disconnected" id="statusDot"></div>
+                    <span id="statusText">Disconnected</span>
+                </div>
+            </div>
+            <div class="connection-panel">
+                <input type="text" id="mqttTopic" placeholder="Masukkan Secret Topic..."
+                    value="rc_car/kendali_kelompok_10">
+                <button id="connectBtn" class="btn-primary">Connect</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="control-panel">
+                <div class="speed-control">
+                    <label for="speedSlider">
+                        <span><i class="fas fa-tachometer-alt"></i> Speed</span>
+                        <span id="speedValue">255</span>
+                    </label>
+                    <input type="range" id="speedSlider" min="0" max="255" value="255">
+                </div>
+
+                <div class="d-pad">
+                    <div class="pad-row">
+                        <button class="pad-btn" id="btnF" data-cmd="F"><i class="fas fa-chevron-up"></i></button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad-btn" id="btnL" data-cmd="L"><i class="fas fa-chevron-left"></i></button>
+                        <button class="pad-btn stop-btn" id="btnS" data-cmd="S"><i class="fas fa-stop"></i></button>
+                        <button class="pad-btn" id="btnR" data-cmd="R"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad-btn" id="btnB" data-cmd="B"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
